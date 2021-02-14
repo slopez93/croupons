@@ -1,0 +1,44 @@
+Resources:
+  CrouponsServerlessPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Description: CrouponsServerlessPolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+            - cloudformation:Describe*
+            - cloudformation:Get*
+            - cloudformation:List*
+            - cloudformation:ValidateTemplate
+          Resource: '*'
+        - Effect: Allow
+          Action:
+            - cloudformation:CreateUploadBucket
+            - cloudformation:Describe*
+            - cloudformation:SetStackPolicy
+            - cloudformation:UpdateStack
+          Resource: arn:aws:cloudformation:${self:custom.constant.REGION}:${self:custom.environment.ACCOUNT_ID}:stack/${self:service}-${opt:stage}/*
+        - Effect: Allow
+          Action:
+            - lambda:Get*
+            - lambda:List*
+            - lambda:CreateFunction
+          Resource: '*'
+        - Effect: Allow
+          Action:
+            - dynamodb:CreateTable
+            - dynamodb:DescribeContinuousBackups
+            - dynamodb:DescribeTable
+            - dynamodb:ListTables
+            - dynamodb:UpdateContinuousBackups
+            - dynamodb:UpdateTable
+          Resource: arn:aws:dynamodb:*:*:table/*
+        - Effect: Allow
+          Action:
+            - events:Put*
+            - events:Remove*
+            - events:Delete*
+            - events:Describe*
+          Resource: arn:aws:events:${self:custom.constant.REGION}:${self:custom.environment.ACCOUNT_ID}:rule/${self:service}-${opt:stage}*

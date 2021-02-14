@@ -1,0 +1,42 @@
+Resources:
+  CrouponsUsersTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Delete
+    Properties:
+      TableName: ${self:custom.constant.DYNAMODB_USER}
+      BillingMode: PAY_PER_REQUEST
+      SSESpecification:
+        SSEEnabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: email
+          AttributeType: S  
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+        - AttributeName: email
+          KeyType: RANGE
+
+  CrouponsCouponsTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Delete
+    Properties:
+      TableName: ${self:custom.constant.DYNAMODB_COUPONS}
+      BillingMode: PAY_PER_REQUEST
+      SSESpecification:
+        SSEEnabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      AttributeDefinitions:
+        - AttributeName: couponId
+          AttributeType: S
+        - AttributeName: userId
+          AttributeType: S 
+      KeySchema:
+        - AttributeName: couponId
+          KeyType: HASH
+        - AttributeName: userId
+          KeyType: RANGE
