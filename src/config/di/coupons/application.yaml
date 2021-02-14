@@ -1,0 +1,14 @@
+services:
+  Coupons.CouponsRepository:
+    class: ../../../modules/coupons/infrastructure/persistence/MongoDbCouponsRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Coupons.CreateCouponUseCase:
+    class: ../../../modules/coupons/application/CreateCouponUseCase
+    arguments: ['@Coupons.CouponsRepository']
+
+  Coupons.CreateCouponOnUserCreated:
+    class: ../../../modules/coupons/application/CreateCouponOnUserCreated
+    arguments: ['@Coupons.CreateCouponUseCase']
+    tags:
+      - { name: 'domainEventSubscriber' }

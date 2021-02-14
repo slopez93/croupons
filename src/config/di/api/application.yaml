@@ -1,0 +1,5 @@
+services:
+  Api.Users.controllers.CreatePostController:
+      class: ../../../api/controllers/users/CreatePostController
+      arguments: ['@Users.CreateUserUseCase']  
+  

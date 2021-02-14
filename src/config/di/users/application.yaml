@@ -1,0 +1,9 @@
+services:
+  Users.UserRepository:
+    class: ../../../modules/users/infrastructure/persistence/MongoDbUserRepository
+    arguments: ['@Shared.ConnectionManager']
+
+  Users.CreateUserUseCase:
+    class: ../../../modules/users/application/CreateUserUseCase
+    arguments: ['@Shared.EventBus', '@Users.UserRepository']
+  
