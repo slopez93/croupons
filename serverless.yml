@@ -4,10 +4,9 @@ package:
   individually: true
 
 plugins:
-  - serverless-bundle
   - serverless-offline
   - serverless-dotenv-plugin
-  # - serverless-plugin-typescript
+  - serverless-bundle
 
 provider:
   name: aws
@@ -20,13 +19,9 @@ custom:
   environment: ${file(env.yml):${opt:stage}}
 
 resources:
-  - ${file(resources/dynamodb.yml)}  
+  - ${file(resources/dynamodb.yml)}
   - ${file(resources/iam-policies.yml)}
 
 functions:
-  app:
-    handler: src/api/server.handler
-    events:
-      - http:
-          path: /
-          method: get
+  - ${file(src/api/controllers/users/functions.yml)}
+  - ${file(src/api/controllers/coupons/functions.yml)}

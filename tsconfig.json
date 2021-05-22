@@ -1,21 +1,24 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "noImplicitAny": true,
+    "lib": ["es2020"],
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": true,
     "moduleResolution": "node",
-    "sourceMap": false,
-    "outDir": "dist",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "target": "es2020",
+    "outDir": "lib",
     "baseUrl": "./",
-    "strict": false,
-    "noEmit": false,
-    "resolveJsonModule": true,
-    "noUnusedLocals": true,
+    "types": ["jest", "reflect-metadata","node"],
     "paths": {
       "~/*": ["src/*"]
-    }
+    },
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": ["./**/*.ts"],
   "exclude": [

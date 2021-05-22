@@ -34,6 +34,8 @@ Resources:
         - AttributeName: couponId
           AttributeType: S
         - AttributeName: userId
+          AttributeType: S
+        - AttributeName: couponName
           AttributeType: S 
       KeySchema:
         - AttributeName: couponId

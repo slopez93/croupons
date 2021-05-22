@@ -1,0 +1,7 @@
+get-users:
+  handler: src/api/controllers/users/usersGetHandler.handler
+  events:
+    - http:
+        cors: true
+        path: /users
+        method: get

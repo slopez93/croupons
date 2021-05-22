@@ -1,0 +1,7 @@
+post-coupon:
+  handler: src/api/controllers/coupons/couponPostHandler.handler
+  events:
+    - http:
+        cors: true
+        path: /coupons
+        method: post

@@ -1,8 +1,12 @@
-import { ContainerBuilder, YamlFileLoader } from 'node-dependency-injection';
+import "reflect-metadata";
+import { Container } from "inversify";
+import { UserContainer } from "./Users";
+import { CouponsContainer } from "./Coupons";
 
-const container = new ContainerBuilder();
-const loader = new YamlFileLoader(container);
-
-loader.load(`${__dirname}/application.yaml`);
+const container = new Container();
+const containerModules = [UserContainer, CouponsContainer];
+for (const reg of containerModules) {
+  new reg().register(container);
+}
 
 export default container;
