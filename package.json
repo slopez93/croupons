@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "deploy": "serverless deploy --force --aws-profile croupons --stage dev",
-    "test": "serverless-bundle test"
+    "test": "serverless-bundle test",
+    "start:dev": "serverless offline start --stage dev"
   },
   "author": "",
   "license": "MIT",
@@ -28,6 +29,8 @@
     "@middy/core": "^2.2.0",
     "@middy/http-error-handler": "^2.2.0",
     "@middy/http-json-body-parser": "^2.2.0",
+    "aws-sdk": "^2.912.0",
+    "events": "^3.3.0",
     "inversify": "^5.1.1",
     "reflect-metadata": "^0.1.13",
     "uuid": "^8.3.2",

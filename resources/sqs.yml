@@ -1,0 +1,5 @@
+Resources:
+  SqsCouponCreated:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: ${self:custom.constant.SQS_COUPON_CREATED}

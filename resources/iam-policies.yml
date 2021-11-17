@@ -28,6 +28,10 @@ Resources:
           Resource: '*'
         - Effect: Allow
           Action:
+            - sqs:*
+          Resource: arn:aws:sqs:*:*  
+        - Effect: Allow
+          Action:
             - dynamodb:CreateTable
             - dynamodb:DescribeContinuousBackups
             - dynamodb:DescribeTable
@@ -42,3 +46,18 @@ Resources:
             - events:Delete*
             - events:Describe*
           Resource: arn:aws:events:${self:custom.constant.REGION}:${self:custom.environment.ACCOUNT_ID}:rule/${self:service}-${opt:stage}*
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:DeleteLogGroup
+            - logs:DescribeLogGroups
+            - logs:DescribeLogStreams
+            - logs:FilterLogEvents
+            - logs:GetLogEvents
+            - logs:GetQueryResults
+            - logs:PutLogEvents
+            - logs:PutSubscriptionFilter
+            - logs:StartQuery
+            - logs:StopQuery
+          Resource: "arn:aws:logs:*:*:*"

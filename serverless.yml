@@ -21,6 +21,8 @@ custom:
 resources:
   - ${file(resources/dynamodb.yml)}
   - ${file(resources/iam-policies.yml)}
+  - ${file(resources/sns.yml)}
+  - ${file(resources/sqs.yml)}
 
 functions:
   - ${file(src/api/controllers/users/functions.yml)}

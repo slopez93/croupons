@@ -1,7 +1,25 @@
 post-coupon:
   handler: src/api/controllers/coupons/couponPostHandler.handler
+  environment:
+    SQS_COUPON_CREATED: ${self:custom.constant.SQS_COUPON_CREATED}
   events:
     - http:
         cors: true
         path: /coupons
         method: post
+
+coupon-created:
+  handler: src/api/controllers/coupons/couponCreatedHandler.handler
+  # events:
+  #   - sns:
+  #       arn: arn:aws:sns:eu-west-1:311488814345:Coupons
+  #       topicName: Coupons
+  #       filterPolicy:
+  #         event_type:
+  #           - croupons.v1.coupon.created
+  events:
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - SqsCouponCreated
+            - Arn       

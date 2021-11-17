@@ -1,3 +1,5 @@
+import { registerDomainEventSubscribers } from "../setup";
+
 const addCorsHeaders = (handler: any, cors: any) => {
   if (cors) {
     if (!handler.response?.headers) {
@@ -10,6 +12,7 @@ const addCorsHeaders = (handler: any, cors: any) => {
 export const apiSetup = ({ cors = null } = {}) => {
   return {
     before: async (handler: any) => {
+      registerDomainEventSubscribers();
       if (!handler.event.queryStringParameters) {
         handler.event.queryStringParameters = {};
       }

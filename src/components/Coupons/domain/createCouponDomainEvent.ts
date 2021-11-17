@@ -19,7 +19,7 @@ export class CreateCouponDomainEvent extends DomainEvent {
   }
 
   toDTO(): Record<string, unknown> {
-    const { id } = this;
-    return { id };
+    const { id, ocurredOn } = this;
+    return { couponId: id, ocurredOn };
   }
 }

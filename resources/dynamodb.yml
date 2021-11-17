@@ -12,13 +12,9 @@ Resources:
       AttributeDefinitions:
         - AttributeName: userId
           AttributeType: S
-        - AttributeName: email
-          AttributeType: S  
       KeySchema:
         - AttributeName: userId
           KeyType: HASH
-        - AttributeName: email
-          KeyType: RANGE
 
   CrouponsCouponsTable:
     Type: AWS::DynamoDB::Table
@@ -35,8 +31,6 @@ Resources:
           AttributeType: S
         - AttributeName: userId
           AttributeType: S
-        - AttributeName: couponName
-          AttributeType: S 
       KeySchema:
         - AttributeName: couponId
           KeyType: HASH

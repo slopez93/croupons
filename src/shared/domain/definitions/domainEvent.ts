@@ -1,6 +1,7 @@
 import { Uuid } from "../valueObject/uuid";
+import { Event } from "./event";
 
-export abstract class DomainEvent {
+export abstract class DomainEvent implements Event {
   static EVENT_NAME: string;
   readonly aggreateId: string;
   readonly eventId: string;
